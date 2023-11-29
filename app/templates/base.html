@@ -1,0 +1,60 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+    {% block css %}
+
+    {% endblock css %}
+
+
+    <title>Inicio</title>
+</head>
+
+<body>
+    {% block script %}
+    <script src="{% static 'js/base.js' %}"></script>
+    {% endblock script %}
+    <div class="general">
+
+        <!-- navbar -->
+        <div class="topnav" id="myTopnav">
+            
+            <a href="{% url 'inicio' %}" class="active">Inicio</a>
+            <!-- <a href="#">{{user.username}}: cerrar sesion</a> -->
+            <a href="{% url 'login' %}">Iniciar Sesion</a>
+            <a href="{% url 'register' %}">Registro</a>
+            <a href="{% url 'toma-fecha' %}">Toma de hora</a>
+
+            <select name="admin" id="admin" onchange="redireccionar()">
+                <option value="">admin</option>
+                <option value="http://127.0.0.1:8000/listado">Usuarios</option>
+                <option value="http://127.0.0.1:8000/addColaboradores">colaboradores</option>
+                <option value="http://127.0.0.1:8000/buscarAtencion">buscar Usuario</option>
+            </select>
+
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i></a>
+        </div>
+
+        {% block contenido %}
+
+        {% endblock contenido %}
+
+        <!-- footer -->
+        <footer>
+            <div class="footer">
+                <p>Dirijete a cualquiera de nuestras redes sociales</p>
+            </div>
+
+        </footer>
+
+    </div>
+
+</body>
+
+</html>
